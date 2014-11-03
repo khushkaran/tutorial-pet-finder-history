@@ -1,0 +1,26 @@
+{
+  "name": "tutorial-pet-finder-history",
+  "version": "0.1.2",
+  "description": "A sample app to accompany the LiveStax tutorials.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "ejs": "^1.0.0",
+    "express": "~4.9.x"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/livestax/tutorial-pet-finder-history"
+  },
+  "keywords": [
+    "node",
+    "livestax",
+    "express"
+  ],
+  "license": "MIT"
+}
