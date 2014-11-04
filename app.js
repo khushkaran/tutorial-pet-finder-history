@@ -23,7 +23,9 @@ app.all('/', function(request, response) {
   var signedRequest = request.body.signed_request;
 
   jwt.verify(signedRequest, appSecret, function(err, decoded) {
-    response.render('index', {signed_request: signedRequest});
+    redis.lrange(decoded.instance_id, 0, -1, function(err, petNameList) {
+      response.render('index', {signed_request: signedRequest, pet_names: petNameList});
+    });
   });
 });
 
