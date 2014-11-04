@@ -20,4 +20,10 @@ app.all('/', function(request, response) {
   });
 });
 
+app.post('/addtohistory', function(request, response) {
+  var petName, signedRequest;
+  petName = request.body.pet_name;
+  signedRequest = request.body.signed_request;
+});
+
 app.listen(app.get('port'));
