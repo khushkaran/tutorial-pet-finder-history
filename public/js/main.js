@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  var signedRequest = $("body").data("signed-request");
+
   Livestax.on("pet-finder.newpet", function(petName) {
     $(".notice").hide();
     $(".js-pet-names").prepend("<a href='#' class='list-group-item'>" + petName + "</a>");

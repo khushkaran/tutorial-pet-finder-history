@@ -16,8 +16,8 @@ app.use(bodyParser.urlencoded( {
 app.all('/', function(request, response) {
   var signedRequest = request.body.signed_request;
   jwt.verify(signedRequest, appSecret, function(err, decoded) {
+    response.render('index', {signed_request: signedRequest});
   });
-  response.render('index');
 });
 
 app.listen(app.get('port'));
