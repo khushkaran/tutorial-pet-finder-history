@@ -11,6 +11,30 @@ $(document).ready(function() {
     $.post("/addtohistory", {pet_name: petName, signed_request: signedRequest});
   });
 
+  Livestax.menu.set("Clear History", "eraser", function() {
+    var dialogData = {
+      title: "Are you sure?",
+      message: "Are you sure you want to clear your history? This is an irreversible action and cannot be undone.",
+      buttons: [
+        {
+          title: "Yes",
+          callback: function(){
+            $.post("/clearhistory", {signed_request: signedRequest});
+            $(".js-pet-names a").remove();
+            $(".notice").show();
+          },
+          type: "danger"
+        },
+        {
+          title: "Cancel",
+          callback: function(){},
+          type: "ok"
+        }
+      ]
+    };
+    Livestax.dialog.show(dialogData);
+  });
+
   $(document.body).on("click", ".js-pet-names a", function(event) {
     var clickedLink, petName;
     clickedLink = event.target;
