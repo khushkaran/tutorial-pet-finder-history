@@ -11,6 +11,12 @@ $(document).ready(function() {
     $.post("/addtohistory", {pet_name: petName, signed_request: signedRequest});
   });
 
+  Livestax.menu.set("Clear History", "eraser", function() {
+    $.post("/clearhistory", {signed_request: signedRequest});
+    $(".js-pet-names a").remove();
+    $(".notice").show();
+  });
+
   $(document.body).on("click", ".js-pet-names a", function(event) {
     var clickedLink, petName;
     clickedLink = event.target;

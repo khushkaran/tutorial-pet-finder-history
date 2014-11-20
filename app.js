@@ -42,4 +42,14 @@ app.post('/addtohistory', function(request, response) {
   };
 });
 
+app.post('/clearhistory', function(request, response) {
+  var signedRequest, instanceID;
+
+  signedRequest = request.body.signed_request;
+  jwt.verify(signedRequest, appSecret, function(err, decoded) {
+    instanceID = decoded.instance_id;
+    redis.del(instanceID);
+  });
+});
+
 app.listen(app.get('port'));
